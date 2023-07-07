@@ -14,7 +14,6 @@ def main
   p second.play_hooky
   p teacher1
   p teacher1.can_use_services?
-
 end
 
 main
