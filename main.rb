@@ -1,6 +1,6 @@
-require './person'
-require './student'
-require './teacher'
+require './classes/person'
+require './classes/student'
+require './classes/teacher'
 
 def main
   first = Person.new(14)
