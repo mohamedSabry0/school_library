@@ -1,8 +1,4 @@
-require './classes/person'
-require './classes/student'
-require './classes/teacher'
-require './classes/capitalize_decorator'
-require './classes/trimmer_decorator'
+
 
 def test_basic_classes
   first = Person.new(14)
