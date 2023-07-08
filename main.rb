@@ -1,6 +1,7 @@
 require './classes/person'
 require './classes/student'
 require './classes/teacher'
+require './classes/capitalize_decorator'
 
 def main
   first = Person.new(14)
@@ -17,6 +18,10 @@ def main
   p teacher1.can_use_services?
   p teacher2
   p teacher2.can_use_services?
+  person = Person.new(22, 'maximilianus')
+  person.correct_name
+  capitalized_person = CapitalizeDecorator.new(person)
+  puts capitalized_person.correct_name
 end
 
 main
