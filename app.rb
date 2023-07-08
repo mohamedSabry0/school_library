@@ -14,6 +14,7 @@ class App
     print 'Author: '
     author = gets.chomp
     Book.new(title, author)
+    puts 'Book created successfully'
   end
 
   def add_person
@@ -45,13 +46,15 @@ class App
     age = gets.chomp.to_i
     print 'Name: '
     name = gets.chomp
+    print 'Classroom: '
+    classroom = gets.chomp
     print 'Has parent permission? [Y/N]: '
     permission = gets.chomp.downcase == 'y'
-    Student.new(age, name, permission)
+    Student.new(age, classroom, name, parent_permission: permission)
   end
 
   def list_people
-    Person.all.each do |person|
+    ObjectSpace.each_object(Person) do |person|
       puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
   end
@@ -70,11 +73,11 @@ class App
     book_index = gets.chomp.to_i
     book = Book.all[book_index]
     puts 'Select a person from the following list by number (not ID)'
-    Person.all.each_with_index do |person, index|
+    ObjectSpace.each_object(Person).with_index do |person, index|
       puts "#{index}) Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     person_index = gets.chomp.to_i
-    person = Person.all[person_index]
+    person = ObjectSpace.each_object(Person).to_a[person_index]
     print 'Date: '
     date = gets.chomp
     Rental.new(date, book, person)
@@ -85,9 +88,10 @@ class App
   def list_rentals
     print 'ID of person: '
     id = gets.chomp.to_i
-    person = Person.find(id)
+    renting_person = ObjectSpace.each_object(Person).find { |person| person.id == id }
+
     puts 'Rentals: '
-    person.rentals.each do |rental|
+    renting_person.rentals.each do |rental|
       puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
     end
   end
