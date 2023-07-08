@@ -6,7 +6,7 @@ def main
   first = Person.new(14)
   student1 = Student.new(18, 'Ruby')
   teacher1 = Teacher.new(34, 'Math', 'John Doe')
-  teacher2 = Teacher.new(44, 'Physics', 'Jack Doe', parent_permission: false)
+  teacher2 = Teacher.new(44, 'Physics', 'Jack Doe', false)
   p first
   p first.can_use_services?
   p student1.can_use_services?
