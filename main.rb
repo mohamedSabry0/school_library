@@ -29,7 +29,7 @@ def test_decorators
   capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
   puts capitalized_trimmed_person.correct_name
 
-  student = Student.new(22, 'CS', 'alexander james maxwell the third')
+  student = Student.new(22, 'CS', 'alexander james')
   capitalized_student = CapitalizeDecorator.new(student)
   puts capitalized_student.correct_name
   capitalized_trimmed_student = TrimmerDecorator.new(capitalized_student)
